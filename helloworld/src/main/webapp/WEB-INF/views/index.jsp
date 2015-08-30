@@ -75,6 +75,5 @@
   <script src="<c:url value="/resources/js/jquery.easing-sooper.js" />"></script>
   <script src="<c:url value="/resources/js/jquery.sooperfish.js" />"></script>
   <script src="<c:url value="/resources/js/main3.js" />"></script>
-  </script>
 </body>
 </html>
