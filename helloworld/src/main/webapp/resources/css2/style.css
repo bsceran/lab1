@@ -1,3 +1,29 @@
+
+label.error {
+	color: red;
+	margin-left: 5px;
+}
+
+div#registerwindow {
+    background-color: #CA1D6F;
+    position: fixed;
+    z-index:2;
+    color: white;
+}
+
+#contact > div > h1 {
+    color: WHITE;
+    text-align: center;
+}
+
+#contact > div > p:nth-child(5) {
+    margin-left: 230px;
+}
+
+.form_settings p {
+    margin-left: 50px;
+}
+
 @font-face { 
   font-family: Yanone Kaffeesatz; 
     src: url('../fonts/YanoneKaffeesatz-Regular.eot'); 
@@ -257,7 +283,7 @@ nav {
 
 .content { 
   text-align: left;
-  width: 700px;
+  width: 500px;
   margin: 0 0 15px 0;
   float: left;
   font-size: 120%;
@@ -319,7 +345,7 @@ footer a:hover {
   
 .form_settings input, .form_settings textarea { 
   padding: 5px; 
-  width: 299px; 
+  width: 200px; 
   font: 100% arial; 
   border: 1px solid #E5E5DB; 
   background: #FFF; 
@@ -333,11 +359,11 @@ footer a:hover {
   font: 100% arial; 
   border: 0; 
   width: 99px; 
-  margin: 0 0 0 212px; 
+  margin: 0 0 0 21px; 
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
-  background: #3B3B3B; 
+  background: #D53838; 
   color: #FFF;
   border-radius: 7px 7px 7px 7px;
   -moz-border-radius: 7px 7px 7px 7px;

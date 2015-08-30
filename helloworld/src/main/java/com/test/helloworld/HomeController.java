@@ -11,10 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.commons.MessageBean;
+import com.test.helloworld.entity.Account;
 
 /**
  * Handles requests for the application home page.
@@ -61,5 +64,17 @@ public class HomeController {
 		int lastIndexOfHTML = url.lastIndexOf("/");
 		int f = url.lastIndexOf(".html");
 		return url.substring(lastIndexOfHTML + 1, f);
+	}
+	
+	@RequestMapping(value = "register", method = RequestMethod.GET)
+	public String registerRequest(ModelMap modelMap) {
+		modelMap.put("account", new Account());
+		return "register";
+	}
+	
+	@RequestMapping(value = "register", method = RequestMethod.POST)
+	public String registerComplete(@ModelAttribute(value="account") Account account, ModelMap modelMap) {
+		modelMap.put("registeredAccount", account);
+		return "registerSuccess";
 	}
 }

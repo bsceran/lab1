@@ -1,5 +1,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page pageEncoding="UTF-8" %>
+<script>
+jQuery.fn.center = function(visible) {
+    if (visible) {
+        var parent = window;
+        this.css({
+        	"display": "block",
+            "top": ((($(parent).height() - this.outerHeight()) / 2) + $(parent).scrollTop() + "px"),
+            "left": ((($(parent).width() - this.outerWidth()) / 2) + $(parent).scrollLeft() + "px")
+        });
+    } else {
+       this.css({
+        "display": "none"
+    	});
+    }
+	return this;
+}
+
+// $("#register").click(function(event) {
+//    event.preventDefault();
+//    $("#registerwindow").center(true);
+// });
+</script>
 <header>
 	<div id="logo">
 		<div id="logo_text">
@@ -39,7 +61,11 @@
                 <li><a href="#">Drop Down Five</a></li>
               </ul>
             </li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a href="contact.html">Giriş yap</a>
+				 <ul>
+                    <li><a id="register" href="register.html">Üye ol</a></li>
+                  </ul>
+				</li>
 			</ul>
 		</div>
 	</nav>
