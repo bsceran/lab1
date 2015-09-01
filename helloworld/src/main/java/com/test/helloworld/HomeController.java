@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.test.commons.MessageBean;
 import com.test.helloworld.entity.Account;
@@ -32,39 +33,31 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/*", method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/index.html"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		logger.info("Welcome home! The client locale is {}. ", request.getRequestURL().toString());
 		
-		String url = request.getRequestURL().toString();
-		if(isIndexPage(url)) {
-			Date date = new Date();
-			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-			
-			String formattedDate = dateFormat.format(date);
-			
-			model.addAttribute("serverTime", formattedDate);
-			model.addAttribute("theMessage", messageBean.getMessage());
-			
-			return "index";
-		} else {
-			return getViewName(url);
-		}
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate);
+		model.addAttribute("theMessage", messageBean.getMessage());
+		
+		return "index";
 	}
 	
-	private boolean isIndexPage(String url) {
-		if(url.endsWith(".html") && !url.contains("index.html")) {
-			return false;
-		} else {
-			return true;
-		}
+	@RequestMapping(value = "/header", method = RequestMethod.GET)
+	public String header(ModelMap modelMap) {
+		return "header";
 	}
 	
-	private String getViewName(String url) {
-		int lastIndexOfHTML = url.lastIndexOf("/");
-		int f = url.lastIndexOf(".html");
-		return url.substring(lastIndexOfHTML + 1, f);
+	@RequestMapping(value = "footer", method = RequestMethod.GET)
+	public String footer(ModelMap modelMap) {
+		return "footer";
 	}
+	
 	
 	@RequestMapping(value = "register", method = RequestMethod.GET)
 	public String registerRequest(ModelMap modelMap) {
@@ -76,5 +69,18 @@ public class HomeController {
 	public String registerComplete(@ModelAttribute(value="account") Account account, ModelMap modelMap) {
 		modelMap.put("registeredAccount", account);
 		return "registerSuccess";
+	}
+	
+	@RequestMapping(value = "/admin**/**", method = RequestMethod.GET)
+	public ModelAndView adminPage(HttpServletRequest request) {
+
+		ModelAndView model = new ModelAndView();
+		model.addObject("title", "Spring Security Hello World");
+		model.addObject("message", "This is protected page!");
+		model.addObject("userName", request.getUserPrincipal().getName());
+		model.setViewName("admin");
+//		return "redirect:index.html";
+		return model;
+
 	}
 }
