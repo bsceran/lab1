@@ -11,9 +11,23 @@
 <h1>Title: ${title}</h1>
 <h1>Message: ${message}</h1>
 
+<c:url value="/logout" var="logoutUrl" />
+
+<form action="${logoutUrl}" method="post" id="logoutForm" >
+	<input 	type="hidden"
+			name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+</form>
+
+<script type="text/javascript">
+	function formSubmit() {
+		document.getElementById("logoutForm").submit();
+	}
+</script>
+
 <h2>${userName} 
-| <a href='<c:url value="/j_spring_security_logout" />' > Logout</a> 
-|   <a href='<c:url value="/index.html" />' > Anasayfa</a>
+| <a href='javascript:formSubmit()' > Logout</a> 
+| <a href='<c:url value="/index.html" />' > Anasayfa</a>
 </h2>
 
 
