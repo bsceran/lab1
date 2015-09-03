@@ -1,28 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page pageEncoding="UTF-8" %>
-<script>
-jQuery.fn.center = function(visible) {
-    if (visible) {
-        var parent = window;
-        this.css({
-        	"display": "block",
-            "top": ((($(parent).height() - this.outerHeight()) / 2) + $(parent).scrollTop() + "px"),
-            "left": ((($(parent).width() - this.outerWidth()) / 2) + $(parent).scrollLeft() + "px")
-        });
-    } else {
-       this.css({
-        "display": "none"
-    	});
-    }
-	return this;
-}
-
-// $("#register").click(function(event) {
-//    event.preventDefault();
-//    $("#registerwindow").center(true);
-// });
-</script>
 <header>
+<c:url value="/logout" var="logoutUrl" />
+
+<form action="${logoutUrl}" method="post" id="logoutForm" >
+	<input 	type="hidden"
+			name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+</form>
+
 	<div id="logo">
 		<div id="logo_text">
 			<!-- class="logo_colour", allows you to change the colour of the text -->
@@ -61,12 +47,17 @@ jQuery.fn.center = function(visible) {
                 <li><a href="#">Drop Down Five</a></li>
               </ul>
             </li>
-				<li><a href="contact.html">Giriş yap</a>
-				 <ul>
-                    <li><a id="register" href="register.html">Üye ol</a></li>
+				<li >
+				 <a  id="loginButton"></a>
+				 <ul id="logoutButtonBar">
+                    <li>
+                    <a id="logoutButton" href="javascript:document.getElementById('logoutForm').submit()">Cıkış yap</a></li>
                   </ul>
 				</li>
 			</ul>
 		</div>
 	</nav>
 </header>
+
+
+<input type="hidden" id="username" name="username" value="${pageContext.request.userPrincipal.name}"/>

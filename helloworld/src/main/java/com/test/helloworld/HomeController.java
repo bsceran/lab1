@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,15 +73,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage(HttpServletRequest request) {
+	public String adminPage(HttpServletRequest request) {
 
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
-		model.addObject("message", "This is protected page!");
-		model.addObject("userName", request.getUserPrincipal().getName());
-		model.setViewName("admin");
-//		return "redirect:index.html";
-		return model;
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("title", "Spring Security Hello World");
+//		model.addObject("message", "This is protected page!");
+//		model.addObject("userName", request.getUserPrincipal().getName());
+//		model.setViewName("index.html");
+		return "redirect:index.html";
+//		return model;
 
 	}
 	
@@ -90,7 +89,8 @@ public class HomeController {
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public ModelAndView login(
 			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
+			@RequestParam(value = "logout", required = false) String logout,
+			HttpServletRequest request) {
 
 			ModelAndView model = new ModelAndView();
 			if (error != null) {
@@ -100,6 +100,7 @@ public class HomeController {
 			if (logout != null) {
 				model.addObject("msg", "You've been logged out successfully.");
 			}
+			model.addObject("contextPath",request.getContextPath());
 			model.setViewName("login");
 
 			return model;

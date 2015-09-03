@@ -17,6 +17,8 @@
 <body>
   <div id="main">
   	<div id="header" ></div>
+  	<div id="login-dialog"></div>
+  	
     <div id="site_content">
       <div id="sidebar_container">
         <img class="paperclip" src="<c:url value="/resources/images/paperclip.png" />" alt="paperclip" />
