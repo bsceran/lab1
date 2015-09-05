@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="s" %>
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
 <html>
@@ -18,6 +19,7 @@
   <div id="main">
   	<div id="header" ></div>
   	<div id="login-dialog"></div>
+  	<div id="register-dialog"></div>
   	
     <div id="site_content">
       <div id="sidebar_container">
@@ -77,6 +79,7 @@
   <script src="<c:url value="/resources/js/jquery.easing-sooper.js" />"></script>
   <script src="<c:url value="/resources/js/jquery.sooperfish.js" />"></script>
   <script src="<c:url value="/resources/js/main3.js" />"></script>
-
+   <script src="<c:url value="/resources/js/jquery.validate.js" />"></script>
+  <script src="<c:url value="/resources/js/additional-methods.js" />"></script>
 </body>
 </html>

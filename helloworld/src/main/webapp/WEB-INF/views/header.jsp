@@ -51,7 +51,13 @@
 				 <a  id="loginButton"></a>
 				 <ul id="logoutButtonBar">
                     <li>
-                    <a id="logoutButton" href="javascript:document.getElementById('logoutForm').submit()">Cıkış yap</a></li>
+                    <a id="logoutButton" href="javascript:document.getElementById('logoutForm').submit()">Cıkış yap</a>
+                    </li>
+                  </ul>
+                  <ul id="registerButtonBar">
+                    <li>
+                    <a id="registerButton">Kayit ol</a>
+                    </li>
                   </ul>
 				</li>
 			</ul>

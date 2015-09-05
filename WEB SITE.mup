@@ -1,0 +1,92 @@
+{
+  "title": "WEB SITE",
+  "id": 1,
+  "formatVersion": 2,
+  "attr": {
+    "style": {}
+  },
+  "ideas": {
+    "1": {
+      "title": "Loing",
+      "id": 2,
+      "attr": {
+        "style": {
+          "background": "#008000"
+        }
+      }
+    },
+    "11": {
+      "title": "Register",
+      "id": 3,
+      "attr": {
+        "style": {
+          "background": "#ffff00"
+        }
+      }
+    },
+    "21": {
+      "title": "Localization",
+      "id": 4,
+      "attr": {
+        "style": {
+          "background": "#ff0000"
+        }
+      }
+    },
+    "31": {
+      "title": "Put Text arthical",
+      "id": 5,
+      "attr": {
+        "style": {
+          "background": "#ff0000"
+        }
+      }
+    },
+    "41": {
+      "title": "Put Picture to articals",
+      "id": 6,
+      "attr": {
+        "style": {
+          "background": "#ff0000"
+        }
+      }
+    },
+    "51": {
+      "title": "Put comment",
+      "id": 7,
+      "attr": {
+        "style": {
+          "background": "#ff0000"
+        }
+      }
+    },
+    "61": {
+      "title": "Hakkimda",
+      "id": 8,
+      "attr": {
+        "style": {
+          "background": "#ff0000"
+        }
+      }
+    },
+    "71": {
+      "title": "Pictures zone",
+      "id": 9,
+      "attr": {
+        "style": {
+          "background": "#ff0000"
+        }
+      }
+    },
+    "81": {
+      "title": "Put video",
+      "id": 10,
+      "attr": {
+        "style": {
+          "background": "#ff0000"
+        }
+      }
+    }
+  },
+  "links": []
+}

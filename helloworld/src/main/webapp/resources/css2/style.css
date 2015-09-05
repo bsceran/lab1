@@ -27,8 +27,8 @@ input[name="submit"] {
 }
 
 .error {
-	padding: 15px;
-	margin-bottom: 20px;
+	padding: 4px;
+	margin-bottom: 4px;
 	border: 1px solid transparent;
 	border-radius: 4px;
 	color: #a94442;
@@ -48,6 +48,16 @@ input[name="submit"] {
 
 #login-div {
 	width: 300px;
+	padding: 20px;
+	margin: 100px auto;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #E02929;
+}
+
+#register-div {
+	width: auto;
 	padding: 20px;
 	margin: 100px auto;
 	background: #fff;

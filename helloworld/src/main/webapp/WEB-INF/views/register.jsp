@@ -11,7 +11,6 @@
   <script src="<c:url value="/resources/js/jquery.validate.js" />"></script>
   <script src="<c:url value="/resources/js/additional-methods.js" />"></script>
   <script type="text/javascript">
-$(document).ready(function() {
   	$(document).ready(function() {
   		$('#registerForm').validate({
   			rules:{
@@ -31,13 +30,13 @@ $(document).ready(function() {
             }
   		});
   	});
-});
   </script>
     
 </head>
 
 <body>
-	<s:form id="registerForm" method="post" commandName="account" action="register.html">
+	<c:url value="/registerRequest" var="registerRequest" />
+	<s:form id="registerForm" method="post" commandName="account" action="${registerRequest}">
 		<table cellpadding="2" cellspacing="2">
 			<tr>
 				<td>Kullanici adi</td>
@@ -52,6 +51,8 @@ $(document).ready(function() {
 				<td><input type="submit" value="Kayit ol"></td>
 			</tr>
 		</table>
+		 <input type="hidden" 
+                     name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</s:form>
 </body>
 </html>

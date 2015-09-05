@@ -1,32 +1,40 @@
-package com.test.helloworld;
-
-import java.util.Properties;
+package com.test.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private MongoOperations mongoOperations;
+	
 	@Override
 	@Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(inMemoryUserDetailsManager());
+        auth.userDetailsService(inMemoryUserDetailsManager())
+        .passwordEncoder(passwordEncoder());
     }
+	
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
+	}
 
-//    @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-        final Properties users = new Properties();
-        users.put("serdar","464197,ROLE_USER,enabled"); 
-        users.put("sueda","464197Sue,ROLE_USER,enabled");
-        users.put("efe","464197Efe,ROLE_USER,enabled");
-        return new InMemoryUserDetailsManager(users);
+    @Bean
+    public UserDetailsManager inMemoryUserDetailsManager() {
+    		return new UserManager(mongoOperations);
     }
     
 	//.csrf() is optional, enabled by default, if using WebSecurityConfigurerAdapter constructor
@@ -41,12 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		    .logout().logoutSuccessUrl("/") // logoin?logout
 		.and()
-		    .csrf(); 		
+		    .csrf();
+//		 .and()
+//		 	.requiresChannel().anyRequest().requiresSecure();
 	}
-//
-//	  @RequestMapping("add/{username}/{password}")
-//	    public String add(@PathVariable("username") String username, @PathVariable("password") String password) {
-//	        inMemoryUserDetailsManager.createUser(new User(username, password, new ArrayList<GrantedAuthority>()));
-//	        return "added";
-//	    }
 }

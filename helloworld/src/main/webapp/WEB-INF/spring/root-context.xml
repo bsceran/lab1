@@ -11,8 +11,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-	<bean id="myBean" class="com.test.commons.MyBean" />
+<!-- 	<bean id="myBean" class="com.test.commons.MyBean" /> -->
 	
-	<context:component-scan base-package="com.test.helloworld" />
 	<mvc:annotation-driven />
 </beans>

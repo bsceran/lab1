@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,92 +19,118 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.test.commons.MessageBean;
 import com.test.helloworld.entity.Account;
+import com.test.persist.User;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
-	@Autowired
-	private MessageBean messageBean;
+//	@Autowired
+//	private MessageBean messageBean;
 
+	@Autowired
+	private UserDetailsManager userDetailsManager;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = {"/","/index.html"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index.html" }, method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		logger.info("Welcome home! The client locale is {}. ", request.getRequestURL().toString());
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+
 		String formattedDate = dateFormat.format(date);
-		
+
 		model.addAttribute("serverTime", formattedDate);
-		model.addAttribute("theMessage", messageBean.getMessage());
-		
+//		model.addAttribute("theMessage", messageBean.getMessage());
+
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/header", method = RequestMethod.GET)
 	public String header(ModelMap modelMap) {
 		return "header";
 	}
-	
+
 	@RequestMapping(value = "footer", method = RequestMethod.GET)
 	public String footer(ModelMap modelMap) {
 		return "footer";
 	}
-	
-	
-	@RequestMapping(value = "register", method = RequestMethod.GET)
-	public String registerRequest(ModelMap modelMap) {
+
+	@RequestMapping(value = "/registerPage", method = RequestMethod.GET)
+	public String registerPage(ModelMap modelMap) {
 		modelMap.put("account", new Account());
-		return "register";
+		return "register2";
 	}
-	
-	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String registerComplete(@ModelAttribute(value="account") Account account, ModelMap modelMap) {
-		modelMap.put("registeredAccount", account);
-		return "registerSuccess";
+
+	// @RequestMapping(value = "/registerRequest", method = RequestMethod.POST)
+	// public String registerComplete(@ModelAttribute(value="account") Account
+	// account, ModelMap modelMap) {
+	// modelMap.put("registeredAccount", account);
+	//
+	//
+	// return "redirect:index.html";
+	// }
+
+	@RequestMapping(value = "/registerRequest", method = RequestMethod.POST)
+	public String add(@ModelAttribute(value = "account") Account account, ModelMap modelMap) {
+		if (account != null) {
+			User user = new User(account.getUsername(), account.getPassword(), "ROLE_USER");
+			userDetailsManager.createUser(user);
+		}
+
+		return "redirect:index.html";
 	}
-	
+
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public String adminPage(HttpServletRequest request) {
 
-//		ModelAndView model = new ModelAndView();
-//		model.addObject("title", "Spring Security Hello World");
-//		model.addObject("message", "This is protected page!");
-//		model.addObject("userName", request.getUserPrincipal().getName());
-//		model.setViewName("index.html");
+		// ModelAndView model = new ModelAndView();
+		// model.addObject("title", "Spring Security Hello World");
+		// model.addObject("message", "This is protected page!");
+		// model.addObject("userName", request.getUserPrincipal().getName());
+		// model.setViewName("index.html");
 		return "redirect:index.html";
-//		return model;
+		// return model;
+
+	}
+
+	// Spring Security see this :
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
+
+		ModelAndView model = new ModelAndView();
+		if (error != null) {
+			model.addObject("error", "Invalid username and password!");
+		}
+
+		if (logout != null) {
+			model.addObject("msg", "You've been logged out successfully.");
+		}
+		model.addObject("contextPath", request.getContextPath());
+		model.setViewName("login");
+
+		return model;
 
 	}
 	
-	//Spring Security see this :
-		@RequestMapping(value = "/login", method = RequestMethod.GET)
-		public ModelAndView login(
-			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout,
-			HttpServletRequest request) {
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView register(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
 
-			ModelAndView model = new ModelAndView();
-			if (error != null) {
-				model.addObject("error", "Invalid username and password!");
-			}
+		ModelAndView model = new ModelAndView();
+		model.addObject("account", new Account());
+		model.addObject("contextPath", request.getContextPath());
+		model.setViewName("register2");
 
-			if (logout != null) {
-				model.addObject("msg", "You've been logged out successfully.");
-			}
-			model.addObject("contextPath",request.getContextPath());
-			model.setViewName("login");
+		return model;
 
-			return model;
-
-		}
+	}
 }
