@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.helloworld.entity.Account;
+import com.test.helloworld.entity.ArticleContent;
 import com.test.persist.User;
 
 /**
@@ -54,8 +56,17 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/header", method = RequestMethod.GET)
-	public String header(ModelMap modelMap) {
+	public String header(ModelMap modelMap, HttpServletRequest request) {
+		modelMap.put("userDetails", getUserDetails(request));
 		return "header";
+	}
+	
+	private UserDetails getUserDetails(HttpServletRequest request) {
+		if(request.getUserPrincipal() != null) {
+			String username = request.getUserPrincipal().getName();
+			return userDetailsManager.loadUserByUsername(username);
+		}
+		return null;
 	}
 
 	@RequestMapping(value = "footer", method = RequestMethod.GET)
@@ -99,6 +110,18 @@ public class HomeController {
 		return "redirect:index.html";
 		// return model;
 
+	}
+	
+	@RequestMapping(value = "/admin/displayAddArticlePage", method = RequestMethod.GET)
+	public String displayAddArticlePage(ModelMap modelMap) {
+		modelMap.put("articleContent", new ArticleContent());
+		return "add_article";
+	}
+	
+	@RequestMapping(value = "/admin/addArticle", method = RequestMethod.POST)
+	public String addArticlePage(@ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
+		logger.info(">>>" + content.getContent());
+		return "redirect:/index.html";
 	}
 
 	// Spring Security see this :

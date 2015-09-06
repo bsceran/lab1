@@ -2,6 +2,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <header>
 <c:url value="/logout" var="logoutUrl" />
+<c:url value="/admin/displayAddArticlePage" var="displayAddArticlePage" />
 
 <form action="${logoutUrl}" method="post" id="logoutForm" >
 	<input 	type="hidden"
@@ -49,14 +50,15 @@
             </li>
 				<li >
 				 <a  id="loginButton"></a>
-				 <ul id="logoutButtonBar">
-                    <li>
+				 <ul>
+                    <li id="logoutButtonBar">
                     <a id="logoutButton" href="javascript:document.getElementById('logoutForm').submit()">Cıkış yap</a>
                     </li>
-                  </ul>
-                  <ul id="registerButtonBar">
-                    <li>
-                    <a id="registerButton">Kayit ol</a>
+                    <li id="registerButtonBar">
+                    <a id="registerButton">Kayıt ol</a>
+                    </li>
+                    <li id="addArticleButtonBar">
+                    <a id="addArticleButton" href="${displayAddArticlePage}">Konu ekle</a>
                     </li>
                   </ul>
 				</li>
