@@ -51,23 +51,7 @@
           </ul>
         </div>
       </div>
-      <div class="content">
-        <img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="<c:url value="/resources/images/home.png" />" alt="home" /><h1 style="margin: 15px 0 0 0;">Welcome to the CSS3_two template</h1>
-        <p>This simple, fixed width website template is released under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 Licence</a>. This means you are free to download and use it for personal and commercial projects. However, you <strong>must leave the 'design from css3templates.co.uk' link in the footer of the template</strong>.</p>
-        <p>This template is written entirely in <strong>HTML5</strong> and <strong>CSS3</strong>.</p>
-        <p>You can view more free CSS3 web templates <a href="http://www.css3templates.co.uk">here</a>.</p>
-        <p>This template is a fully documented 5 page website, with an <a href="examples.html">examples</a> page that gives examples of all the styles available with this design. There is also a working PHP contact form on the contact page.</p>
-        <p></p>
-        <img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="<c:url value="/resources/images/browser.png" />" alt="browser" /><h1 style="margin: 15px 0 0 0;">Browser Compatibility</h1>
-        <p>This template has been tested in the following browsers:</p>
-        <ul>
-          <li>Internet Explorer 8</li>
-          <li>Internet Explorer 7</li>
-          <li>FireFox 10</li>
-          <li>Google Chrome 17</li>
-          <li>Safari 5</li>
-        </ul>
-      </div>
+      <div id="articles-section"></div>
     </div>
     <div id="scroll">
       <a title="Scroll to the top" class="top" href="#"><img src="<c:url value="/resources/images/top.png" />"  alt="top" /></a>

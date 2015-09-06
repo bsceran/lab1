@@ -213,7 +213,7 @@ ol li {
 	margin: 20px auto;
 }
 
-#main, #logo, #site_content, footer {
+#main, #logo, #site_content, footer, #articles_container {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -276,11 +276,11 @@ nav {
 	margin: 0 auto 0 auto;
 }
 
-#site_content {
+#site_content, #articles_container {
 	width: 1059px;
 	overflow: hidden;
 	margin: 0px auto 0 auto;
-	padding: 15px 0 40px 0;
+	padding: 15px 0 10px 0;
 }
 
 #sidebar_container {
