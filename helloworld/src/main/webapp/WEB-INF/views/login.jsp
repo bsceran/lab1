@@ -47,6 +47,6 @@
 <script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />"></script>
   <script src="<c:url value="/resources/js/jquery.easing-sooper.js" />"></script>
   <script src="<c:url value="/resources/js/jquery.sooperfish.js" />"></script>
- <script src="<c:url value="/resources/js/loginform.js" />"></script>
+  <script src="<c:url value="/resources/js/loginform.js" />"></script>
 </body>
 </html>

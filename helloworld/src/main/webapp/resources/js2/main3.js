@@ -65,6 +65,7 @@ jQuery(document).ready(function() {
     	$("#register-dialog").css("position","fixed");
     	
     });
+    $("#articles-section").load("articles.html #articles_container");
   });
 
 function displayLoginDialog(display) {

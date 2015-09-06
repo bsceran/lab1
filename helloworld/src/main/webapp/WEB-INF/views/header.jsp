@@ -51,14 +51,14 @@
 				<li >
 				 <a  id="loginButton"></a>
 				 <ul>
+                    <li id="addArticleButtonBar">
+                    <a id="addArticleButton" href="${displayAddArticlePage}">Konu ekle</a>
+                    </li>
                     <li id="logoutButtonBar">
-                    <a id="logoutButton" href="javascript:document.getElementById('logoutForm').submit()">Cıkış yap</a>
+                    <a id="logoutButton" href="javascript:document.getElementById('logoutForm').submit()">Çıkış yap</a>
                     </li>
                     <li id="registerButtonBar">
                     <a id="registerButton">Kayıt ol</a>
-                    </li>
-                    <li id="addArticleButtonBar">
-                    <a id="addArticleButton" href="${displayAddArticlePage}">Konu ekle</a>
                     </li>
                   </ul>
 				</li>

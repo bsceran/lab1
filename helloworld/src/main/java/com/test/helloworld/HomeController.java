@@ -2,6 +2,7 @@ package com.test.helloworld;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.test.helloworld.entity.Account;
 import com.test.helloworld.entity.ArticleContent;
+import com.test.helloworld.services.ArticleServiceFacade;
 import com.test.persist.User;
 
 /**
@@ -34,6 +36,9 @@ public class HomeController {
 
 	@Autowired
 	private UserDetailsManager userDetailsManager;
+	
+	@Autowired
+	private ArticleServiceFacade articleService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -113,15 +118,23 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin/displayAddArticlePage", method = RequestMethod.GET)
-	public String displayAddArticlePage(ModelMap modelMap) {
+	public String displayAddArticlePage(ModelMap modelMap, HttpServletRequest request) {
 		modelMap.put("articleContent", new ArticleContent());
+		modelMap.put("contextPath", request.getContextPath());
 		return "add_article";
 	}
 	
 	@RequestMapping(value = "/admin/addArticle", method = RequestMethod.POST)
 	public String addArticlePage(@ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
-		logger.info(">>>" + content.getContent());
+		articleService.addArticle(content);
 		return "redirect:/index.html";
+	}
+	
+	@RequestMapping(value = "/articles", method = RequestMethod.GET)
+	public String articles(ModelMap modelMap) {
+		List<ArticleContent> articles = articleService.getAllArticles();
+		modelMap.put("articles", articles);
+		return "articles";
 	}
 
 	// Spring Security see this :
