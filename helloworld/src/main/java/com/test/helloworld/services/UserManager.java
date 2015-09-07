@@ -1,4 +1,4 @@
-package com.test.security;
+package com.test.helloworld.services;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;

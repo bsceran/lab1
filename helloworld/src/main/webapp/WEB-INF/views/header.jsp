@@ -67,5 +67,5 @@
 	</nav>
 </header>
 
-
-<input type="hidden" id="username" name="username" value="${pageContext.request.userPrincipal.name}"/>
+<input type="hidden" id="userName" value="${userName}"/>
+<input type="hidden" id="userRole" value="${userRole}"/>

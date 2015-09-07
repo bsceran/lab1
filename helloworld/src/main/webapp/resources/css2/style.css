@@ -218,6 +218,13 @@ ol li {
 	margin-right: auto;
 }
 
+#article_seciton {
+	box-sizing: border-box;
+    width: 60%;
+    display: inline-block;
+    margin-left: 38px;
+}
+
 header {
 	background: #D31B59;
 	height: 200px;
@@ -276,14 +283,26 @@ nav {
 	margin: 0 auto 0 auto;
 }
 
-#site_content, #articles_container {
+#site_content {
 	width: 1059px;
 	overflow: hidden;
 	margin: 0px auto 0 auto;
 	padding: 15px 0 10px 0;
 }
 
+#articles_container {
+	overflow: hidden;
+	margin: 0px auto 0 auto;
+	padding: 15px 0 10px 0;
+	  display: inline-block;
+	  width: 800px;
+}
+
+
 #sidebar_container {
+	box-sizing: border-box;
+    display: inline-block;
+    margin-right: 27px;
 	float: right;
 	width: 224px;
 }

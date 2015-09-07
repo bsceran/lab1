@@ -31,8 +31,6 @@ import com.test.persist.User;
  */
 @Controller
 public class HomeController {
-//	@Autowired
-//	private MessageBean messageBean;
 
 	@Autowired
 	private UserDetailsManager userDetailsManager;

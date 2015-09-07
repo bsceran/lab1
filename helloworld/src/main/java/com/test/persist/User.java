@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author sceran
  *
  */
-@Document(collection="users")
+@Document(collection="users3")
 public class User implements UserDetails{
 
 	/**

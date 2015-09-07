@@ -2,13 +2,19 @@ jQuery(document).ready(function() {
     $('ul.sf-menu').sooperfish();
     $('.top').click(function() {$('html, body').animate({scrollTop:0}, 'fast'); return false;});
     $("#header").load("header.html", null, function() {
-    	var username = $('#username').val();
-    	if(username) {
-    		$("#loginButton").text(username);
+    	var userRole = $('#userRole').val();
+    	console.log("role:" + userRole);
+    	if(userRole) {
+    		var userName = $('#userName').val();
+    		$("#loginButton").text(userName);
     		$("#loginButton").attr("href", "#");
     		$("#logoutButtonBar").css("display", "block");
     		$("#registerButtonBar").css("display", "none");
-    		$("#addArticleButtonBar").css("display", "block");
+    		if(userRole == 'ROLE_ADMIN') {
+    			$("#addArticleButtonBar").css("display", "block");
+    		} else {
+    			$("#addArticleButtonBar").css("display", "none");
+    		}
     	} else {
     		$("#loginButton").text('Giriş yap');
     		$("#loginButton").attr("href", "javascript:displayLoginDialog(true)")
