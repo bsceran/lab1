@@ -29,7 +29,7 @@
 	
 	 <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/header" />
+            <mvc:mapping path="/header.html" />
             <bean class="com.test.helloworld.UserInfoInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>

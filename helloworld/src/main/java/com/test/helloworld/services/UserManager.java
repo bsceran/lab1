@@ -28,6 +28,12 @@ public class UserManager implements UserDetailsManager {
 			mongoOperations.save((User)userDetails);
 		}
 	}
+	
+	public void createUserWithoutHashingPassword(UserDetails userDetails) {
+		if(!userExists(userDetails.getUsername())){
+			mongoOperations.save((User)userDetails);
+		}
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

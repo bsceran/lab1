@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class PasswordEncoderGenerator {
 
   public static void main(String[] args) {
-	final String password = "xxxxx";
+	final String password = "464197";
 	
 	int i = 0;
 	while (i < 10) {
