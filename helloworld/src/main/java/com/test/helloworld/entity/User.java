@@ -1,4 +1,4 @@
-package com.test.persist;
+package com.test.helloworld.entity;
 
 import java.util.Arrays;
 import java.util.Collection;

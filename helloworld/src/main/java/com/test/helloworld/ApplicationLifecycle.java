@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.test.helloworld.entity.User;
 import com.test.helloworld.services.UserManager;
-import com.test.persist.User;
 
 @Component
 public class ApplicationLifecycle {

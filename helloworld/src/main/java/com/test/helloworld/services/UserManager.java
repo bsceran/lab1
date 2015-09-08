@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 
-import com.test.persist.User;
+import com.test.helloworld.entity.User;
 import com.test.tools.PasswordEncoderGenerator;
 
 public class UserManager implements UserDetailsManager {

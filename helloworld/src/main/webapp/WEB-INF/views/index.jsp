@@ -8,7 +8,8 @@
   <title>Sueda'nin Blogu</title>
   <meta name="description" content="sueda'nin blogu" />
   <meta name="keywords" content="sueda, psikolojik danisman rehber" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="utf-8" http-equiv="encoding">
   <meta http-equiv="robots" content="noindex,nofollow" />
   <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
   <!-- modernizr enables HTML5 elements and feature detects -->
