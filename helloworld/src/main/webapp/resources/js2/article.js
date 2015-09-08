@@ -5,8 +5,7 @@ $(document).ready(function() {
 });
 
 function gotoHome() {
-	var contextPath = $("#contextPath").val();
-	window.location.href = contextPath + "/index.html";
+	window.location.href = "index.html";
 }
 
 

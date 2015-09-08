@@ -27,6 +27,4 @@
 	</s:form>
 </body>
 
-<input type="hidden" id="contextPath" value="${contextPath}"/>
-
 </html>
