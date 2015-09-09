@@ -13,6 +13,7 @@
   <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/article.css" />">
   <script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />" charset="utf-8"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/jquery-te-1.4.0.min.js"/>"  charset="utf-8"></script>
+  <script src="<c:url value="/url" />"></script>
   <script src="<c:url value="/resources/js/article.js" />"></script>
 </head>
   

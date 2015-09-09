@@ -28,6 +28,11 @@ public class HomeController {
 	public String header(ModelMap modelMap, HttpServletRequest request) {
 		return "header";
 	}
+	
+	@RequestMapping(value = "/url", method = RequestMethod.GET)
+	public String url(ModelMap modelMap, HttpServletRequest request) {
+		return "url";
+	}
 
 	@RequestMapping(value = "/footer", method = RequestMethod.GET)
 	public String footer(ModelMap modelMap) {

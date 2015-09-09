@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function gotoHome() {
-	window.location.href = "index.html";
+	window.location.href = url("index.html");
 }
 
 
