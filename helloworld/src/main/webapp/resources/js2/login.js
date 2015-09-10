@@ -1,3 +1,8 @@
+function loginPageSettings() {
+	$("#login-dialog").css("display","none");
+	$("#login-dialog").css("position","fixed");
+}
+
 function displayRegisterDialog(display) {
 	if(display) {
 		displayLoginDialog(false);

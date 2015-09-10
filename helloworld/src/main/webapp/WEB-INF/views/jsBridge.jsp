@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 /**
  * Returns servlet context aware URL, ready to use for AJAX calls and resource
@@ -20,4 +21,12 @@
  */
 function url(path){
     return '<spring:url value="/" />' + path;
+}
+
+function userRole(){
+   return '<c:out value="${userRole}"/>';
+}
+
+function userName(){
+    return '<c:out value="${userName}"/>';
 }

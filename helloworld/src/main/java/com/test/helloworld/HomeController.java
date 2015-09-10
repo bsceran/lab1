@@ -29,9 +29,9 @@ public class HomeController {
 		return "header";
 	}
 	
-	@RequestMapping(value = "/url", method = RequestMethod.GET)
+	@RequestMapping(value = "/jsBridge", method = RequestMethod.GET)
 	public String url(ModelMap modelMap, HttpServletRequest request) {
-		return "url";
+		return "jsBridge";
 	}
 
 	@RequestMapping(value = "/footer", method = RequestMethod.GET)

@@ -63,6 +63,7 @@
   <script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />"></script>
   <script src="<c:url value="/resources/js/jquery.easing-sooper.js" />"></script>
   <script src="<c:url value="/resources/js/jquery.sooperfish.js" />"></script>
+  <script src="<c:url value="/jsBridge" />"></script>
   <script src="<c:url value="/resources/js/main3.js" />"></script>
    <script src="<c:url value="/resources/js/jquery.validate.js" />"></script>
   <script src="<c:url value="/resources/js/additional-methods.js" />"></script>

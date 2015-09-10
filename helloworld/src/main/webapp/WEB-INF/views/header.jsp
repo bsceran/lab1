@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page pageEncoding="UTF-8" %>
 <header>
+<script src="<c:url value="/jsBridge" />"></script>
 <c:url value="/logout" var="logoutUrl" />
 <c:url value="/admin/displayAddArticlePage" var="displayAddArticlePage" />
 
@@ -66,6 +67,3 @@
 		</div>
 	</nav>
 </header>
-
-<input type="hidden" id="userName" value="${userName}"/>
-<input type="hidden" id="userRole" value="${userRole}"/>
