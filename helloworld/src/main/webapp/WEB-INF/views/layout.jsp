@@ -8,6 +8,7 @@
 </head>
 
 <body>
+	<output id="pageName" ><tiles:insertAttribute name="pageName" ignore="true" /></output>
 	<div><tiles:insertAttribute name="header" /></div>  
 	<div style="font-size:0px">
 		<div style="float:left;padding:10px;width:80%; font-size:14px; box-sizing: border-box;"><tiles:insertAttribute name="body" /></div>  

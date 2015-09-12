@@ -14,8 +14,9 @@ $(document).ready(function() {
 	
 	$("#footer").load(url("footer.html"));
 	
-	if(userRole() != "ROLE_ADMIN") {
+	if(userRole() != "ROLE_ADMIN" || $("#pageName").val() == "index") {
 		$("#deleteArticleForm").css("display","none");
+		$("#displayForEditButton").css("display","none");
 	}
 });
 

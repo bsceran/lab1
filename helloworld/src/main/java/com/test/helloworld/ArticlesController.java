@@ -46,7 +46,7 @@ public class ArticlesController {
 	}
 
 	@RequestMapping(value = "/admin/deleteArticle", method = RequestMethod.POST)
-	public String deleteTheArticle(@RequestParam("article") String articleId, ModelMap modelMap) {
+	public String deleteTheArticle(@RequestParam("articleId") String articleId, ModelMap modelMap) {
 		articleService.deleteArticle(articleId);
 		modelMap.put("articleContent", new ArticleContent());
 		return "manage_articles";
