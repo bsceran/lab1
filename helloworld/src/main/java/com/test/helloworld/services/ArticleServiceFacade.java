@@ -13,4 +13,6 @@ public interface ArticleServiceFacade {
 	List<ArticleContent> getPublishedArticles();
 
 	void deleteArticle(String articleId);
+
+	ArticleContent findArticle(String articleId);
 }

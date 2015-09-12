@@ -9,11 +9,11 @@
 	<c:forEach var="article" items="${articles}">
 		<div class="content">
 			<img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="<c:url value="/resources/images/home.png" />" alt="home" />
-			<form id="deleteArticleForm" method="post" action="${deleteArticle}">
-				<input id="articleId" name="articleId" type="hidden" value="${article.id}"/>
+			<form name="deleteArticleForm" method="post" action="${deleteArticle}">
+				<input name="articleId" type="hidden" value="${article.id}"/>
 				<input style="float: right ;" type="submit" value="Sil" style="width: 50px; height: 30px;">		
 			</form>
-			<input id="displayForEditButton" style="float: right ;" type="button" value="Güncelle" style="width: 100px; height: 30px;">
+			<input name="displayForEditButton" style="float: right ;" type="button" value="Güncelle" style="width: 100px; height: 30px;">
 			${article.content}
 		</div>
 	</c:forEach>

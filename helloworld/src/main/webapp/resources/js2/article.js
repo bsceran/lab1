@@ -15,9 +15,20 @@ $(document).ready(function() {
 	$("#footer").load(url("footer.html"));
 	
 	if(userRole() != "ROLE_ADMIN" || $("#pageName").val() == "index") {
-		$("#deleteArticleForm").css("display","none");
-		$("#displayForEditButton").css("display","none");
+		$("form[name='deleteArticleForm']").css("display","none");
+		$("input[name='displayForEditButton']").css("display","none");
 	}
+	
+	$( "input[name='displayForEditButton']" ).click(function() {
+	  var articleId = $(this).closest(".content").find("input[name='articleId']").val();
+	  $.ajax({
+	        url : url("getArticleContent?articleId="+articleId),
+	        success : function(data) {
+	        	$("#articleEditor").jqteVal(data);
+	        }
+	  });
+		
+	});
 });
 
 function gotoHome() {
