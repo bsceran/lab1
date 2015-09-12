@@ -5,9 +5,18 @@ $(document).ready(function() {
 		$("#header").load(url("header.html"), null, headerSettings); 
 	});
 	
-	$('.jqte-test').jqte();
+	$.getScript(url("resources/js/jquery-te-1.4.0.min.js"), function(e) {
+		if(! $('#articleEditor').hasClass('jqted')){
+			$('#articleEditor').addClass('jqted');
+			$('#articleEditor').jqte();
+		}
+	});
 	
 	$("#footer").load(url("footer.html"));
+	
+	if(userRole() != "ROLE_ADMIN") {
+		$("#deleteArticleForm").css("display","none");
+	}
 });
 
 function gotoHome() {

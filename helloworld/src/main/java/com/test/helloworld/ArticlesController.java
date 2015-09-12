@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.test.helloworld.entity.ArticleContent;
 import com.test.helloworld.services.ArticleServiceFacade;
@@ -40,6 +41,13 @@ public class ArticlesController {
 	public String saveAndPublishTheArticle(@ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
 		content.setPublishable(true);
 		articleService.saveArticle(content);
+		modelMap.put("articleContent", new ArticleContent());
+		return "manage_articles";
+	}
+
+	@RequestMapping(value = "/admin/deleteArticle", method = RequestMethod.POST)
+	public String deleteTheArticle(@RequestParam("article") String articleId, ModelMap modelMap) {
+		articleService.deleteArticle(articleId);
 		modelMap.put("articleContent", new ArticleContent());
 		return "manage_articles";
 	}

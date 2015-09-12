@@ -18,7 +18,7 @@
 	<h1>Yeni Bir Konu</h1>
 	<c:url value="/admin/addArticle" var="addArticle" />
 	<s:form id="putArticleForm" method="post" commandName="articleContent" action="${addArticle}">
-		<s:textarea id="content" class="jqte-test" path="content"></s:textarea>
+		<s:textarea id="articleEditor" path="content"></s:textarea>
 		<input type="submit" name="save" value="Kaydet" style="width: 103px; height: 30px;">
 		<input type="submit" name="publish" value="Yayınla" style="width: 103px; height: 30px;">
 		<input onclick="gotoHome()" type="button" value="İptal" style="width: 103px; height: 30px;">
@@ -27,7 +27,6 @@
 </body>
 
   <script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />" charset="utf-8"></script>
-  <script type="text/javascript" src="<c:url value="/resources/js/jquery-te-1.4.0.min.js"/>"  charset="utf-8"></script>
   <script src="<c:url value="/jsBridge" />"></script>
   <script src="<c:url value="/resources/js/article.js" />"></script>
 </html>

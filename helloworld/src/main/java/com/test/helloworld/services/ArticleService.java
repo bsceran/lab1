@@ -31,4 +31,10 @@ public class ArticleService implements ArticleServiceFacade{
 		Query query = new Query(Criteria.where("publishable").is(true));
 		return mongoOperations.find(query, ArticleContent.class);
 	}
+
+	@Override
+	public void deleteArticle(String articleId) {
+		Query query = new Query(Criteria.where("id").is(articleId));
+		mongoOperations.remove(query, ArticleContent.class);
+	}
 }
