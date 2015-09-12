@@ -19,7 +19,7 @@
 
 	<definition name="index" extends="base.definition">
 		<put-attribute name="title" value="Siteye hoş geldiniz." />
-		<put-attribute name="body" value="/articles"  />
+		<put-attribute name="body" value="/publishedArticles"  />
 		<put-attribute name="sidebar" value="/WEB-INF/views/navigation.jsp" />
 	</definition>
 	
@@ -30,7 +30,7 @@
 	
 	<definition name="manage_articles_section" extends="base.manage_items">
 		<put-attribute name="add_item" value="/WEB-INF/views/add_article.jsp" />
-		<put-attribute name="item_list" value="/articles" />
+		<put-attribute name="item_list" value="/allArticles" />
 	</definition>
 	
 </tiles-definitions>  

@@ -15,11 +15,12 @@
 </head>
   
 <body>
-	<h1>Yeni Konu</h1>
+	<h1>Yeni Bir Konu</h1>
 	<c:url value="/admin/addArticle" var="addArticle" />
 	<s:form id="putArticleForm" method="post" commandName="articleContent" action="${addArticle}">
 		<s:textarea id="content" class="jqte-test" path="content"></s:textarea>
-		<input type="submit" value="Gönder" style="width: 103px; height: 30px;">
+		<input type="submit" name="save" value="Kaydet" style="width: 103px; height: 30px;">
+		<input type="submit" name="publish" value="Yayınla" style="width: 103px; height: 30px;">
 		<input onclick="gotoHome()" type="button" value="İptal" style="width: 103px; height: 30px;">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</s:form>

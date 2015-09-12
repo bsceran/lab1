@@ -6,7 +6,9 @@ import com.test.helloworld.entity.ArticleContent;
 
 public interface ArticleServiceFacade {
 
-	void addArticle(ArticleContent articleContent);
+	void saveArticle(ArticleContent articleContent);
 
 	List<ArticleContent> getAllArticles();
+
+	List<ArticleContent> getPublishedArticles();
 }
