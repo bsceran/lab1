@@ -1,4 +1,10 @@
 function registerPageSettings() {
+	$.getScript(url("resources/js/jquery.validate.js"), function(e) {
+		_registerPageSettings();
+	});
+}
+
+function _registerPageSettings() {
 	$('#registerForm').validate({
 			rules:{
 				"username":{
@@ -38,5 +44,4 @@ function registerPageSettings() {
 		});
 	$("#register-dialog").css("display","none");
 	$("#register-dialog").css("position","fixed");
-	
 }

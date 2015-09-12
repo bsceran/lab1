@@ -9,6 +9,7 @@ function displayRegisterDialog(display) {
 	}
 
 	displayDialog(display, $("#register-dialog"));
+	
 	$("#register-dialog #username").focus();
 	$("#register-dialog #username").val('');
 	$("#register-dialog #password").val('');
@@ -31,7 +32,9 @@ function displayDialog(display, dialog) {
 	}
 	dialog.css("top",top);
 	dialog.css("left",left);
+	dialog.css("position","fixed");
 	dialog.css("display",display);
+
 	$("#login-dialog input[name='username']").focus();
 	$("#close").css("display",display);
 }

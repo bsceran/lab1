@@ -1,3 +1,14 @@
+jQuery(document).ready(function() {
+	$.getScript(url("resources/js/shortkeys.js"));
+	$.getScript(url("resources/js/login.js"),function(e) {
+		$("#login-dialog").load(url("login.html") + " #login-div", null, loginPageSettings);
+	});
+	$.getScript(url("resources/js/register.js"), function(e) {
+		$("#register-dialog").load(url("register.html") + " #register-div", null, registerPageSettings);
+	});
+
+	headerSettings();
+  });
 
 function headerSettings() {
 	if(userRole()) {

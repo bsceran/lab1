@@ -159,6 +159,12 @@ h5, h6 {
 	padding: 0 0 15px 0;
 }
 
+.top {
+    float: left;
+    margin-left: 50%;
+    padding: 0px;
+}
+
 a, a:hover {
 	outline: none;
 	text-decoration: underline;
@@ -232,9 +238,10 @@ header {
 }
 
 #logo {
-	width: 1000px;
+	width: auto;
 	height: 200px;
 	background: transparent url(../images/logo.jpg) no-repeat right;
+	background-size:cover;
 	color: #888;
 	padding: 0;
 }
@@ -252,7 +259,7 @@ header {
 }
 
 #logo_text h1, #logo_text h1 a, #logo_text h1 a:hover {
-	padding: 10px 0 0 0;
+	padding: 10px 0 0 62px;
 	color: #FFF;
 	text-decoration: none;
 }
@@ -267,7 +274,7 @@ header {
 
 #logo_text h2 {
 	font-size: 150%;
-	padding: 0 0 0 0;
+	padding: 0 0 0 69px;
 	color: #09D4FF;
 }
 
@@ -299,18 +306,10 @@ nav {
 }
 
 
-#sidebar_container {
-	box-sizing: border-box;
-    display: inline-block;
-    margin-right: 27px;
-	float: right;
-	width: 224px;
-}
-
 .sidebar {
 	float: right;
 	width: 200px;
-	margin: 0 0 17px 0;
+	margin: 25px 0 27px 0px;
 	background: #FFF;
 	border: 1px solid #eee;
 	border-radius: 7px 7px 7px 7px;
@@ -361,6 +360,8 @@ nav {
 	z-index: 0;
 	vertical-align: middle;
 	margin: -15px 0 -60px -40px;
+	top: -20px;
+	left: -7px;
 }
 
 .content {

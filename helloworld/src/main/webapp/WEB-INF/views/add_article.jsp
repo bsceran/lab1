@@ -15,7 +15,6 @@
 </head>
   
 <body>
-	<div id="header" ></div>
 	<h1>Yeni Konu</h1>
 	<c:url value="/admin/addArticle" var="addArticle" />
 	<s:form id="putArticleForm" method="post" commandName="articleContent" action="${addArticle}">
@@ -24,7 +23,6 @@
 		<input onclick="gotoHome()" type="button" value="İptal" style="width: 103px; height: 30px;">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</s:form>
-	<div id="footer" ></div>
 </body>
 
   <script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />" charset="utf-8"></script>

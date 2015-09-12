@@ -27,7 +27,7 @@ public class ArticlesController {
 	public String displayAddArticlePage(ModelMap modelMap, HttpServletRequest request) {
 		modelMap.put("articleContent", new ArticleContent());
 		modelMap.put("contextPath", request.getContextPath());
-		return "add_article";
+		return "manage_articles";
 	}
 	
 	@RequestMapping(value = "/admin/addArticle", method = RequestMethod.POST)

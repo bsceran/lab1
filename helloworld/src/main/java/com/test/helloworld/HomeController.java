@@ -24,18 +24,9 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/header", method = RequestMethod.GET)
-	public String header(ModelMap modelMap, HttpServletRequest request) {
-		return "header";
-	}
-	
 	@RequestMapping(value = "/jsBridge", method = RequestMethod.GET)
 	public String url(ModelMap modelMap, HttpServletRequest request) {
 		return "jsBridge";
 	}
 
-	@RequestMapping(value = "/footer", method = RequestMethod.GET)
-	public String footer(ModelMap modelMap) {
-		return "footer";
-	}
 }
