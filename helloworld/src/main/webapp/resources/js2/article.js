@@ -6,6 +6,7 @@ $(document).ready(function() {
 	});
 	
 	$('.jqte-test').jqte();
+	
 	$("#footer").load(url("footer.html"));
 });
 
