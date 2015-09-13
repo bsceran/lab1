@@ -7,8 +7,8 @@
 <div id="articles_container">
 	<c:forEach var="article" items="${articles}">
 		<tiles:insertTemplate template="article_layout.jsp"  flush="false" >
-		    <tiles:putAttribute name="articleId" value="${article._id}"/>
-		    <tiles:putAttribute name="articleContent" value="${article.content}"/>
+			<tiles:putAttribute name="articleId" value="${article._id}"/>
+		    <tiles:putAttribute name="articleContent" value="${article.publishedContent}"/>
 		</tiles:insertTemplate>
 	</c:forEach>
 </div>

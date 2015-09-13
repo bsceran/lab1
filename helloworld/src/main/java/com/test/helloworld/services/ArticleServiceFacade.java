@@ -2,6 +2,8 @@ package com.test.helloworld.services;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import com.test.helloworld.entity.ArticleContent;
 
 public interface ArticleServiceFacade {
@@ -12,7 +14,9 @@ public interface ArticleServiceFacade {
 
 	List<ArticleContent> getPublishedArticles();
 
-	void deleteArticle(String articleId);
+	void deleteArticle(ObjectId articleId);
 
-	ArticleContent findArticle(String articleId);
+	ArticleContent findArticle(ObjectId articleId);
+
+	void saveAndPublishArticle(ArticleContent content);
 }
