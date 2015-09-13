@@ -67,6 +67,7 @@ public class ArticlesController {
 	}
 	
 	
+	
 	@RequestMapping(value = "/publishedArticles")
 	public String publishedArticles(ModelMap modelMap) {
 		List<ArticleContent> articles = articleService.getPublishedArticles();
