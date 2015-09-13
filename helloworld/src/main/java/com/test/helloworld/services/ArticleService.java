@@ -2,7 +2,6 @@ package com.test.helloworld.services;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -18,8 +17,8 @@ public class ArticleService implements ArticleServiceFacade{
 	private MongoOperations mongoOperations;
 
 	@Override
-	public void saveArticle(ArticleContent articleContent) {
-		ArticleContent findArticle = findArticle(articleContent.get_id());
+	public void saveArticle(String articleId, ArticleContent articleContent) {
+		ArticleContent findArticle = findArticle(articleId);
 		if(findArticle == null) {
 			mongoOperations.save(articleContent);
 		} else {
@@ -40,19 +39,19 @@ public class ArticleService implements ArticleServiceFacade{
 	}
 
 	@Override
-	public void deleteArticle(ObjectId articleId) {
+	public void deleteArticle(String articleId) {
 		Query query = new Query(Criteria.where("_id").is(articleId));
 		mongoOperations.remove(query, ArticleContent.class);
 	}
 
 	@Override
-	public ArticleContent findArticle(ObjectId articleId) {
+	public ArticleContent findArticle(String articleId) {
 		return mongoOperations.findById(articleId, ArticleContent.class);
 	}
 
 	@Override
-	public void saveAndPublishArticle(ArticleContent articleContent) {
-		ArticleContent findArticle = findArticle(articleContent.get_id());
+	public void saveAndPublishArticle(String articleId, ArticleContent articleContent) {
+		ArticleContent findArticle = findArticle(articleId);
 		if(findArticle == null) {
 			articleContent.setPublishable(true);
 			articleContent.setPublishedContent(articleContent.getContent());
@@ -63,5 +62,15 @@ public class ArticleService implements ArticleServiceFacade{
 			findArticle.setContent(articleContent.getContent());
 			mongoOperations.save(findArticle);
 		}
+	}
+
+	@Override
+	public void publishArticle(String articleId, boolean publish) {
+		ArticleContent findArticle = findArticle(articleId);
+		if(findArticle != null) {
+			findArticle.setPublishable(publish);
+			findArticle.setPublishedContent(findArticle.getContent());
+			mongoOperations.save(findArticle);
+		} 
 	}
 }

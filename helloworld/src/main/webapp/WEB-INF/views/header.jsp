@@ -12,6 +12,7 @@
 	<script src="<c:url value="/jsBridge" />"></script>
 	<script src="<c:url value="/resources/js/header.js" />"></script>
 	
+	<c:url value="/index.html" var="indexUrl" />
 	<c:url value="/logout" var="logoutUrl" />
 	<c:url value="/admin/displayAddArticlePage" var="displayAddArticlePage" />
 </head>
@@ -38,7 +39,7 @@
 <nav>
 	<div id="menu_container">
 		<ul class="sf-menu" id="nav">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="${indexUrl}">Home</a></li>
 			<li><a href="examples.html">Examples</a></li>
 			<li><a href="page.html">A Page</a>
 				<ul>

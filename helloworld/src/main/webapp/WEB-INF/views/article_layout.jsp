@@ -5,8 +5,20 @@
 
 
 <c:url value="/admin/deleteArticle" var="deleteArticle" />
+<c:url value="/admin/publishArticle" var="publishArticle" />
+<c:url value="/admin/unpublishArticle" var="unpublishArticle" />
 <div class="content">
 	<img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="<c:url value="/resources/images/home.png" />" alt="home" />
+	<form name="publishArticleForm" method="post" action="${publishArticle}">
+		<input name="articleId" type="hidden" value="<tiles:getAsString name='articleId'/>"/>
+		<input name="articlePublished" type="hidden" value="<tiles:getAsString name='articlePublished'/>"/>
+		<input style="float: right ;" type="submit" value="Yayınla" style="width: 50px; height: 30px;">		
+	</form>
+	<form name="unpublishArticleForm" method="post" action="${unpublishArticle}">
+		<input name="articleId" type="hidden" value="<tiles:getAsString name='articleId'/>"/>
+		<input name="articlePublished" type="hidden" value="<tiles:getAsString name='articlePublished'/>"/>
+		<input style="float: right ;" type="submit" value="Yayından kaldır" style="width: 50px; height: 30px;">		
+	</form>
 	<form name="deleteArticleForm" method="post" action="${deleteArticle}">
 		<input name="articleId" type="hidden" value="<tiles:getAsString name='articleId'/>"/>
 		<input style="float: right ;" type="submit" value="Sil" style="width: 50px; height: 30px;">		

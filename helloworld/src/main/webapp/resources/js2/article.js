@@ -14,11 +14,6 @@ $(document).ready(function() {
 	
 	$("#footer").load(url("footer.html"));
 	
-	if(userRole() != "ROLE_ADMIN" || pageName() == "index") {
-		$("form[name='deleteArticleForm']").css("display","none");
-		$("input[name='displayForEditButton']").css("display","none");
-	}
-	
 	$( "input[name='displayForEditButton']" ).click(function() {
 	  var articleId = $(this).closest(".content").find("input[name='articleId']").val();
 	  $.ajax({
@@ -31,6 +26,31 @@ $(document).ready(function() {
 	  });
 		
 	});
+	
+	$("form[name='publishArticleForm']" ).each(function( index ) {
+		var published = $(this).find("input[name='articlePublished']").val();
+		if(published == 'true') {
+			$(this).css("display","none");
+		} else {
+			$(this).css("display","block");
+		}
+	});
+	
+	$("form[name='unpublishArticleForm']" ).each(function( index ) {
+		var published = $(this).find("input[name='articlePublished']").val();
+		if(published == 'true') {
+			$(this).css("display","block");
+		} else {
+			$(this).css("display","none");
+		}
+	});
+	
+	if(userRole() != "ROLE_ADMIN" || pageName() == "index") {
+		$("form[name='deleteArticleForm']").css("display","none");
+		$("input[name='displayForEditButton']").css("display","none");
+		$("form[name='publishArticleForm']").css("display","none");
+		$("form[name='unpublishArticleForm']").css("display","none");
+	}
 });
 
 function cancelArticle() {

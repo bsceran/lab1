@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,27 +33,35 @@ public class ArticlesController {
 	
 	@RequestMapping(params="save", value = "/admin/addArticle", method = RequestMethod.POST)
 	public String saveTheArticle(@RequestParam("articleId") String articleId, @ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
-		if(articleId != null && !articleId.isEmpty()) {
-			content.set_id(new ObjectId(articleId));
-		}
-		articleService.saveArticle(content);
+		articleService.saveArticle(articleId, content);
 		modelMap.put("articleContent", new ArticleContent());
 		return "manage_articles";
 	}
 	
 	@RequestMapping(params="publish", value = "/admin/addArticle", method = RequestMethod.POST)
 	public String saveAndPublishTheArticle(@RequestParam("articleId") String articleId,@ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
-		if(articleId != null && !articleId.isEmpty()) {
-			content.set_id(new ObjectId(articleId));
-		}
-		articleService.saveAndPublishArticle(content);
+		articleService.saveAndPublishArticle(articleId, content);
 		modelMap.put("articleContent", new ArticleContent());
 		return "manage_articles";
 	}
 
 	@RequestMapping(value = "/admin/deleteArticle", method = RequestMethod.POST)
 	public String deleteTheArticle(@RequestParam("articleId") String articleId, ModelMap modelMap) {
-		articleService.deleteArticle(new ObjectId(articleId));
+		articleService.deleteArticle(articleId);
+		modelMap.put("articleContent", new ArticleContent());
+		return "manage_articles";
+	}
+	
+	@RequestMapping(value = "/admin/publishArticle", method = RequestMethod.POST)
+	public String publishArticle(@RequestParam("articleId") String articleId, ModelMap modelMap) {
+		articleService.publishArticle(articleId, true);
+		modelMap.put("articleContent", new ArticleContent());
+		return "manage_articles";
+	}
+	
+	@RequestMapping(value = "/admin/unpublishArticle", method = RequestMethod.POST)
+	public String unpublishArticle(@RequestParam("articleId") String articleId, ModelMap modelMap) {
+		articleService.publishArticle(articleId, false);
 		modelMap.put("articleContent", new ArticleContent());
 		return "manage_articles";
 	}
@@ -76,7 +83,7 @@ public class ArticlesController {
 	@RequestMapping(value = "/getArticleContent", method = RequestMethod.GET)
     public @ResponseBody
 	     String getArticleContent(@RequestParam("articleId") String articleId) {
-		 ArticleContent articleContent = articleService.findArticle(new ObjectId(articleId));
+		 ArticleContent articleContent = articleService.findArticle(articleId);
 	     return articleContent.getContent();
     }
 }

@@ -9,6 +9,7 @@
 		<tiles:insertTemplate template="article_layout.jsp"  flush="false" >
 			<tiles:putAttribute name="articleId" value="${article._id}"/>
 		    <tiles:putAttribute name="articleContent" value="${article.publishedContent}"/>
+		    <tiles:putAttribute name="articlePublished" value="${article.publishable}"/>
 		</tiles:insertTemplate>
 	</c:forEach>
 </div>

@@ -2,21 +2,21 @@ package com.test.helloworld.services;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
 import com.test.helloworld.entity.ArticleContent;
 
 public interface ArticleServiceFacade {
 
-	void saveArticle(ArticleContent articleContent);
+	void saveArticle(String articleId, ArticleContent articleContent);
 
 	List<ArticleContent> getAllArticles();
 
 	List<ArticleContent> getPublishedArticles();
 
-	void deleteArticle(ObjectId articleId);
+	void deleteArticle(String articleId);
 
-	ArticleContent findArticle(ObjectId articleId);
+	ArticleContent findArticle(String articleId);
 
-	void saveAndPublishArticle(ArticleContent content);
+	void saveAndPublishArticle(String articleId, ArticleContent content);
+
+	void publishArticle(String articleId, boolean publish);
 }
