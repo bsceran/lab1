@@ -30,3 +30,7 @@ function userRole(){
 function userName(){
     return '<c:out value="${userName}"/>';
 }
+
+function pageName(){
+   return $("#pageName").val();
+}
