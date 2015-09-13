@@ -21,8 +21,9 @@
 		<s:textarea id="articleEditor" path="content"></s:textarea>
 		<input type="submit" name="save" value="Kaydet" style="width: 103px; height: 30px;">
 		<input type="submit" name="publish" value="Yayınla" style="width: 103px; height: 30px;">
-		<input onclick="gotoHome()" type="button" value="İptal" style="width: 103px; height: 30px;">
+		<input onclick="cancelArticle()" type="button" value="İptal" style="width: 103px; height: 30px;">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input id="articleId" name="articleId" type="hidden" value=""/>
 	</s:form>
 </body>
 

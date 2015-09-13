@@ -32,14 +32,16 @@ public class ArticlesController {
 	}
 	
 	@RequestMapping(params="save", value = "/admin/addArticle", method = RequestMethod.POST)
-	public String saveTheArticle(@ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
+	public String saveTheArticle(@RequestParam("articleId") String articleId, @ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
+		content.setId(articleId);
 		articleService.saveArticle(content);
 		modelMap.put("articleContent", new ArticleContent());
 		return "manage_articles";
 	}
 	
 	@RequestMapping(params="publish", value = "/admin/addArticle", method = RequestMethod.POST)
-	public String saveAndPublishTheArticle(@ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
+	public String saveAndPublishTheArticle(@RequestParam("articleId") String articleId,@ModelAttribute(value = "articleContent") ArticleContent content, ModelMap modelMap) {
+		content.setId(articleId);
 		content.setPublishable(true);
 		articleService.saveArticle(content);
 		modelMap.put("articleContent", new ArticleContent());

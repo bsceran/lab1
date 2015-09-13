@@ -25,14 +25,27 @@ $(document).ready(function() {
 	        url : url("getArticleContent?articleId="+articleId),
 	        success : function(data) {
 	        	$("#articleEditor").jqteVal(data);
+	        	$("#articleId").val(articleId);
+	        	window.scrollTo(0,0);
 	        }
 	  });
 		
 	});
 });
 
-function gotoHome() {
-	window.location.href = url("index.html");
+function cancelArticle() {
+	var articleId = $("#articleId").val();
+	if(articleId == "" || articleId == null) {
+		$("#articleEditor").jqteVal("");
+	} else {
+		$.ajax({
+			url : url("getArticleContent?articleId="+articleId),
+			success : function(data) {
+				$("#articleEditor").jqteVal(data);
+				$("#articleEditor").focus();
+			}
+		});
+	}
 }
 
 
